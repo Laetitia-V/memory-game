@@ -1,0 +1,19 @@
+* {
+     margin:0;
+     box-sizing: border-box;
+}
+
+html, body {
+     width: 100vw;
+     height: 100vh;
+}
+
+main {
+     padding: 20px 0 50px 0;
+     width: 100%;
+     height: calc(100% - (50px + 76px));
+     display: flex;
+     flex-direction: row;
+     justify-content: space-evenly;
+     align-items: center;
+}

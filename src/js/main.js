@@ -32,11 +32,14 @@ function addCard(card) {
 
      for (i of [0, 1]){
           const id = name + i;
-          $( "#board-game").append($("<img></img>")
+          $( "#game > .board-game").append($("<div></div>")
                          .attr({
-                              src: file,
                               id: id,
                               class: "board-game__card" 
+                         }));
+          $( "#" + id).append($("<img></img>")
+                         .attr({
+                              src: file
                          }));
      }
 }
