@@ -1,0 +1,31 @@
+{
+     "name": "memory-game",
+     "version": "1.0.0",
+     "description": "Un jeu de cartes de mémoire dédié aux enfants.",
+     "keywords": [
+          "game",
+          "memory",
+          "card",
+          "children",
+          "animal"
+     ],
+     "main": "./src/js/main.js",
+     "scripts": {
+          "sass": "sass --watch ./src/scss/main.scss:./public/css/style.css --style compressed",
+          "prefix": "postcss ./public/css/style.css --use autoprefixer -d ./public/css/prefixed/"
+     },
+     "repository": {
+          "type": "git",
+          "url": "git+https://github.com/Laetitia-V/memory-game.git"
+     },
+     "author": "Laetitia-V",
+     "license": "ISC",
+     "browserslist": "last 4 versions",
+     "bugs": {
+          "url": "https://github.com/Laetitia-V/memory-game/issues"
+     },
+     "homepage": "https://github.com/Laetitia-V/memory-game/#readme",
+     "dependencies": {
+          "jquery": "^3.6.0"
+     }
+}
