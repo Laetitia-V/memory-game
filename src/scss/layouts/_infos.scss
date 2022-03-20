@@ -1,4 +1,7 @@
 .infos {
      margin-top: 30px;
-     width: 26vw;
+     width: $left-width;
+     @include mobile-only {
+          width: 80vw;
+     }
 }
