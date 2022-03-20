@@ -29,6 +29,7 @@ function addCard(card, round) {
                          else {
                               nbCardPairsFound += 1;
                               updateProgressBar();
+                              if (nbCardPairsFound == nbCardPairsToFound) clearInterval(stopwatch);
                               $(cardSelected[1]).parent().css("opacity", "0");
                               $(cardSelected[2]).parent().css("opacity", "0");
                          }
