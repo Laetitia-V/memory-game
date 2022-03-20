@@ -9,9 +9,11 @@
      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
      <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
      <link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
-     <link rel="stylesheet" href="../public/css/style.css">
+     <link rel="stylesheet" href="../public/css/prefixed/style.css">
      <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
      <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+     <script src="js/card.js"></script>
+     <script src="js/game.js"></script>
      <script src="js/main.js"></script>
 </head>
 <body>
@@ -22,11 +24,11 @@
           <div>
                <div class="setup">
                     <!--<div id="slider-level" class="setup__level"></div>-->
-                    <button class="setup__start">Jouer</button>
+                    <button id="start" class="setup__start">Jouer</button>
                </div>
                <div class="infos">
                     <div id="progress-bar" class="infos__progress-bar"></div>
-                    <div id="time" class="infos__time"></div>
+                    <div id="time" class="infos__time">00:00</div>
                </div>
           </div>
           <div id="game" class="game-container">
