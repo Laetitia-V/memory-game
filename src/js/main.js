@@ -1,7 +1,9 @@
+let progressBar; 
+
 $( function() {
      addSlider();
-     addProgressBar();
      loadCards();
+     addProgressBar();
 });
 
 function addSlider() {
@@ -13,5 +15,17 @@ function addSlider() {
 } 
 
 function addProgressBar() {
-     $( "#progress-bar" ).progressbar();
+     console.log(nbCardPairsToFound);
+     progressBar = $( "#progress-bar" ).progressbar({
+          min:0,
+          max: nbCardPairsToFound,
+          value: nbCardPairsFound
+     });
+}
+
+function updateProgressBar() {
+     progressBar.progressbar({
+          max: nbCardPairsToFound,
+          value: nbCardPairsFound
+     });
 }

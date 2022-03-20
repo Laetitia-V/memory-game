@@ -1,4 +1,6 @@
 let cardSelected = {};
+let nbCardPairsFound = 0;
+let nbCardPairsToFound;
 
 function addCard(card, round) {
      const name = card.name;
@@ -25,6 +27,8 @@ function addCard(card, round) {
                               $(cardSelected[2]).css("display", "none");
                          }
                          else {
+                              nbCardPairsFound += 1;
+                              updateProgressBar();
                               $(cardSelected[1]).parent().css("opacity", "0");
                               $(cardSelected[2]).parent().css("opacity", "0");
                          }
@@ -57,6 +61,7 @@ function getRandomNumber(min, max) {
 
 function loadCards() {
      $.getJSON("../../public/cards/cards.json", function(data){
+          nbCardPairsToFound = data.length;
           //ajout de cartes aléatoires 2 fois pour former les paires
           for (i of [1, 2]) addRandomCards(data, i);
      }).fail(function(){
