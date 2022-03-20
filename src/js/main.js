@@ -15,28 +15,3 @@ function addSlider() {
 function addProgressBar() {
      $( "#progress-bar" ).progressbar();
 }
-
-function loadCards() {
-     $.getJSON("../../public/cards/cards.json", function(cards){
-          for(const card of cards){
-               addCard(card);
-          }
-      }).fail(function(){
-          console.log("An error has occurred.");
-      });
-}
-
-function addCard(card) {
-     const name = card.name;
-     const file = "../../public/cards/" + name + ".png";
-
-     for (i of [0, 1]){
-          const id = name + i;
-          $( "#game > .board-game")
-               .append($("<div></div>")
-                    .attr({class: "board-game__card"})
-                    .append($("<img></img>")
-                         .attr({id: id, class:name, src: file})
-                    ));
-     }
-}
