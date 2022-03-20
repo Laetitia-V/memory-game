@@ -19,25 +19,25 @@ function updateCards(img){
           }
           else if (Object.keys(cardSelected).length == 1) {
                cardSelected[2] = img;
-               hasDisplay = true;
-               
-               setTimeout(function() {
-                    const firstCardName = $(cardSelected[1]).attr("class");
-                    const secondCardName = $(cardSelected[2]).attr("class");
-                    if (firstCardName != secondCardName) {
+
+               const firstCardName = $(cardSelected[1]).attr("class");
+               const secondCardName = $(cardSelected[2]).attr("class");
+
+               if (firstCardName != secondCardName) {
+                    hasDisplay = true;
+                    setTimeout(function() {
                          $(cardSelected[1]).css("display", "none");
                          $(cardSelected[2]).css("display", "none");
-                    }
-                    else {
-                         nbCardPairsFound += 1;
-                         updateProgressBar();
-                         if (nbCardPairsFound == nbCardPairsToFound) clearInterval(stopwatch);
-                         //$(cardSelected[1]).parent().css("opacity", "0");
-                         //$(cardSelected[2]).parent().css("opacity", "0");
-                    }
+                         cardSelected = {};
+                         hasDisplay = false;
+                    }, 1000);
+               }
+               else {
+                    nbCardPairsFound += 1;
+                    updateProgressBar();
+                    if (nbCardPairsFound == nbCardPairsToFound) clearInterval(stopwatch);
                     cardSelected = {};
-                    hasDisplay = false;
-               }, 1000);
+               }
           }
      }
      //sinon attendre que le delai d'affichage des cartes soit fini
