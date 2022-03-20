@@ -5,6 +5,10 @@
           width: 80vw;
           height: calc(80vw + (80vw / 4));
      }
+     @include large-screen {
+          width: 60vw;
+          height: calc(60vw - (60vw / 4));
+     }
 }
 .board-game {
      width: 100%;

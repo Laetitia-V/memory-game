@@ -3,3 +3,9 @@
           @content;
      }
 }
+
+@mixin large-screen {
+     @media screen and (max-width: map-get($breakpoints, mobile)){
+          @content;
+     }
+}
