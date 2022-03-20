@@ -1,3 +1,5 @@
+let cardSelected = {};
+
 function addCard(card, round) {
      const name = card.name;
      const file = "../../public/cards/" + name + ".png";
@@ -29,6 +31,11 @@ function getRandomNumber(min, max) {
      return Math.round(Math.random() * (max - min) + min);
 }
 
+function hideCards() {
+     $(cardSelected[1]).css("display", "none");
+     $(cardSelected[2]).css("display", "none");
+}
+
 function loadCards() {
      $.getJSON("../../public/cards/cards.json", function(data){
           nbCardPairsToFound = data.length;
@@ -37,4 +44,34 @@ function loadCards() {
      }).fail(function(){
           console.log("An error has occurred.");
      });
+}
+
+function updateCards(img){
+     //si moins de 2 cartes sont retournees (or paires trouvees)
+     if (!hasDisplay) {
+          $(img).css("display", "block");
+          if (Object.keys(cardSelected).length == 0) {
+               cardSelected[1] = img;
+          }
+          else if (Object.keys(cardSelected).length == 1) {
+               cardSelected[2] = img;
+               const firstCardName = $(cardSelected[1]).attr("class");
+               const secondCardName = $(cardSelected[2]).attr("class");
+               if (firstCardName != secondCardName) {
+                    hasDisplay = true;
+                    setTimeout(function() {
+                         hideCards();
+                         cardSelected = {};
+                         hasDisplay = false;
+                    }, 1000);
+               }
+               else {
+                    nbCardPairsFound += 1;
+                    updateProgressBar();
+                    if (nbCardPairsFound == nbCardPairsToFound) clearInterval(stopwatch);
+                    cardSelected = {};
+               }
+          }
+     }
+     //sinon attendre que le delai d'affichage des cartes soit fini
 }
