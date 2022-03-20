@@ -7,6 +7,6 @@ button {
      cursor: pointer;
      &.setup__start {
           background-color: $main-color;
-          border-color: $second-color;
+          border-color: $main-color-darker;
      }
 }
