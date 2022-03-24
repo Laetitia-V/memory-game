@@ -66,7 +66,10 @@ function updateCards(img){
           else if (Object.keys(cardSelected).length == 1) {
                cardSelected[2] = img;
                const firstCardName = $(cardSelected[1]).attr("class");
+               const firstCardId = $(cardSelected[1]).attr("id");
                const secondCardName = $(cardSelected[2]).attr("class");
+               const secondCardId = $(cardSelected[2]).attr("id");
+               //si deux cartes differentes: les laisser affichees 1seconde puis les retourner
                if (firstCardName != secondCardName) {
                     hasDisplay = true;
                     setTimeout(function() {
@@ -75,12 +78,15 @@ function updateCards(img){
                          hasDisplay = false;
                     }, 1000);
                }
-               else {
+               //si la paire est trouvee
+               else if (firstCardId != secondCardId) { 
                     nbCardPairsFound += 1;
                     updateProgressBar();
                     if (nbCardPairsFound == nbCardPairsToFound) stopStopwatch();
                     cardSelected = {};
                }
+               //si plusieurs clics consecutifs sur une meme carte
+               else cardSelected = {1: cardSelected[1]};
           }
      }
      //sinon attendre que le delai d'affichage des cartes soit fini
