@@ -1,4 +1,5 @@
 let cardSelected = {};
+let hasDisplay = false;
 
 function addCard(card, round) {
      const name = card.name;

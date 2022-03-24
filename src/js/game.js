@@ -1,28 +1,49 @@
 let nbCardPairsFound = 0;
 let nbCardPairsToFound;
-let hasDisplay = false;
+let progressBar; 
 let stopwatch;
 let timer;
 
+/*function addSliderLevel() {
+     $( "#slider-level" ).slider({
+          min:1,
+          max:5,
+          value:2
+     });
+}*/ 
 
-function startGame() {
-     $( "#game > .board-game > div").on("click", function() {updateCards(this.firstChild)});
+function resetGame() {
+     stopStopwatch();
+     resetCards();
+     resetProgressBar();
+     resetStopwatch();
+     $("#start").prop('disabled', false);
 }
 
-function addButtons() {
+function setGame() {
+     $( "#game > .board-game > div").on("click", function() {
+          updateCards(this.firstChild)
+     });
+}
+
+function startGame() {
+     setGame();
+     initProgressBar();
+     startStopwatch();
+     $("#start").prop('disabled', true);
+}
+
+function setButtons() {
      $("#start").on("click", function (e) {
-          startStopwatch();
-          setProgressBar();
           startGame();
-          $("#start").prop('disabled', true);
      });
      $("#reset").on("click", function (e) {
-          stopStopwatch();
-          resetCards();
-          resetProgressBar();
-          resetStopwatch();
-          $("#start").prop('disabled', false);
+          resetGame(); 
      });
+}
+
+function resetStopwatch() {
+     $("#time").html("00:00");
 }
 
 function startStopwatch() {
@@ -40,31 +61,19 @@ function stopStopwatch() {
      clearInterval(stopwatch);
 }
 
-function resetStopwatch() {
-     $("#time").html("00:00");
+function createProgressBar() {
+     progressBar = $( "#progress-bar" ).progressbar();
 }
 
-function addSliderLevel() {
-     $( "#slider-level" ).slider({
-          min:1,
-          max:5,
-          value:2
+function initProgressBar() {
+     progressBar.progressbar({
+          max: nbCardPairsToFound
      });
-} 
-
-function addProgressBar() {
-     progressBar = $( "#progress-bar" ).progressbar();
 }
 
 function resetProgressBar() {
      progressBar.progressbar({
           value: 0
-     });
-}
-
-function setProgressBar() {
-     progressBar.progressbar({
-          max: nbCardPairsToFound
      });
 }
 
