@@ -9,8 +9,9 @@ function addCard(card, round) {
           .append($("<div></div>")
                .attr({class: "board-game__card"})
                .append($("<img></img>")
-                    .attr({id: id, class:name, src: file})
-               ));
+                    .attr({id: id, class:name, src: file}))
+               .append("<div class='board-game__card--back'></div>")
+          );
 }
 
 function addRandomCards(data, round) {
@@ -34,6 +35,8 @@ function getRandomNumber(min, max) {
 function hideCards() {
      $(cardSelected[1]).css("display", "none");
      $(cardSelected[2]).css("display", "none");
+     $("#" + cardSelected[1].id + " + div").css("display", "block");
+     $("#" + cardSelected[2].id + " + div").css("display", "block");
 }
 
 function loadCards() {
@@ -49,6 +52,7 @@ function loadCards() {
 function updateCards(img){
      //si moins de 2 cartes sont retournees (or paires trouvees)
      if (!hasDisplay) {
+          $("#" + img.id + " + div").css("display", "none");
           $(img).css("display", "block");
           if (Object.keys(cardSelected).length == 0) {
                cardSelected[1] = img;
