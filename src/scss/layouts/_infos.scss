@@ -1,6 +1,6 @@
 .infos {
      text-align: center;
-     margin-top: 30px;
+     margin: 30px auto 0 auto;
      width: $left-width;
      @include mobile-only {
           width: 80vw;
@@ -14,7 +14,7 @@
           &.ui-progressbar .ui-progressbar-value, > div {
                margin:-1px 0 0 -1px;
                height: 32px;
-               background-color: $second-color;
+               background-color: $main-color-darker;
           }
      }
 }

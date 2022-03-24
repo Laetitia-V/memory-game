@@ -12,7 +12,9 @@ button {
      font-family: 'Roboto', sans-serif;
      font-weight: 900;
      font-size: 1rem;
-     &.setup__start {
-          color: white;
-     }
+     color: white;
+}
+
+.info__time {
+     color: $main-color-darker;
 }

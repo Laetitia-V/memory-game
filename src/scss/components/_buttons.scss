@@ -4,10 +4,13 @@ button {
      width: 120px;
      height: 40px;
      border-radius: 100px;
-     display:block;
+     //display:block;
      margin:auto;
      cursor: pointer;
      &.setup__start {
           background-color: $second-color;
+     }
+     &.setup__reset {
+          background-color: $third-color;
      }
 }
