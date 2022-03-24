@@ -2,29 +2,46 @@ let nbCardPairsFound = 0;
 let nbCardPairsToFound;
 let hasDisplay = false;
 let stopwatch;
+let timer;
 
 
 function startGame() {
-     setProgressBar();
      $( "#game > .board-game > div").on("click", function() {updateCards(this.firstChild)});
 }
 
-function addStopwatch() {
+function addButtons() {
      $("#start").on("click", function (e) {
           startStopwatch();
+          setProgressBar();
           startGame();
+          $("#start").prop('disabled', true);
+     });
+     $("#reset").on("click", function (e) {
+          stopStopwatch();
+          resetCards();
+          resetProgressBar();
+          resetStopwatch();
+          $("#start").prop('disabled', false);
      });
 }
 
 function startStopwatch() {
-     i = 1;
+     timer = 1;
      stopwatch = setInterval(function () {       
-          const minutes = (Math.floor(i / 60)).toString();
-          const seconds = (i % 60).toString();
+          const minutes = (Math.floor(timer / 60)).toString();
+          const seconds = (timer % 60).toString();
           const time = `${minutes.padStart(2, '0')}:${seconds.padStart(2, '0')}`;
           $("#time").html(time);         
-          i++;
+          timer++;
      }, 1000);
+}
+
+function stopStopwatch() {
+     clearInterval(stopwatch);
+}
+
+function resetStopwatch() {
+     $("#time").html("00:00");
 }
 
 function addSliderLevel() {
@@ -37,6 +54,12 @@ function addSliderLevel() {
 
 function addProgressBar() {
      progressBar = $( "#progress-bar" ).progressbar();
+}
+
+function resetProgressBar() {
+     progressBar.progressbar({
+          value: 0
+     });
 }
 
 function setProgressBar() {

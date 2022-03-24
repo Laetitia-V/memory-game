@@ -49,6 +49,11 @@ function loadCards() {
      });
 }
 
+function resetCards() {
+     $( "#game > .board-game").empty();
+     loadCards();  
+}
+
 function updateCards(img){
      //si moins de 2 cartes sont retournees (or paires trouvees)
      if (!hasDisplay) {
@@ -72,7 +77,7 @@ function updateCards(img){
                else {
                     nbCardPairsFound += 1;
                     updateProgressBar();
-                    if (nbCardPairsFound == nbCardPairsToFound) clearInterval(stopwatch);
+                    if (nbCardPairsFound == nbCardPairsToFound) stopStopwatch();
                     cardSelected = {};
                }
           }
