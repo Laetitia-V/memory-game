@@ -8,6 +8,10 @@ html, body {
      height: 100vh;
 }
 
+body {
+     background-color: $main-color-lighter;
+}
+
 main {
      box-sizing: content-box;
      padding: 20px 0 50px 0;

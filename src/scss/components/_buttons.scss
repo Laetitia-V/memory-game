@@ -8,7 +8,6 @@ button {
      margin:auto;
      cursor: pointer;
      &.setup__start {
-          background-color: $main-color;
-          border-color: $main-color-darker;
+          background-color: $second-color;
      }
 }
