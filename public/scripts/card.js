@@ -3,7 +3,7 @@ let hasDisplay = false;
 
 function addCard(card, round) {
      const name = card.name;
-     const file = "../../public/images/cards/" + name + ".png";
+     const file = "./data/images/cards/" + name + ".png";
 
      const id = name + round;
      $( "#game > .board-game")
@@ -41,7 +41,7 @@ function hideCards() {
 }
 
 function loadCards() {
-     $.getJSON("../../public/json/cards.json", function(data){
+     $.getJSON("./data/json/cards.json", function(data){
           nbCardPairsToFound = data.length;
           //ajout de cartes aléatoires 2 fois pour former les paires
           for (i of [1, 2]) addRandomCards(data, i);
